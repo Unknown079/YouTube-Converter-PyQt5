@@ -37,13 +37,13 @@ class MP4(QMainWindow):
         try:
             mp4_path = os.path.join(os.environ['USERPROFILE'],"Desktop")
             os.chdir(f"{mp4_path}")
-            os.mkdir("MP4 Downloader")
-            os.chdir(f'{mp4_path}\MP4 Downloader')
+            os.mkdir("MP4 Files")
+            os.chdir(f'{mp4_path}\MP4 Files')
             self.audio_downloder = YoutubeDL({'format':'mp4'})
             new = self.link.text()
             self.audio_downloder.extract_info(new)
         except FileExistsError:
-            os.chdir(f'{mp4_path}\MP4 Downloader')
+            os.chdir(f'{mp4_path}\MP4 Files')
             self.audio_downloder = YoutubeDL({'format':'mp4'})
             new = self.link.text()
             self.audio_downloder.extract_info(new)
@@ -81,8 +81,8 @@ class MP3(QMainWindow):
         try:
             mp3_path = os.path.join(os.environ['USERPROFILE'],"Desktop")
             os.chdir(f'{mp3_path}')
-            os.mkdir("MP3 Downloader")
-            os.chdir(f'{mp3_path}\MP3 Downloader')
+            os.mkdir("MP3 Files")
+            os.chdir(f'{mp3_path}\MP3 Files')
             new = self.link.text()
             
             video_info = YoutubeDL().extract_info(url=new, download=False)
@@ -101,7 +101,7 @@ class MP3(QMainWindow):
 
             YoutubeDL(options).download([video_info['webpage_url']])
         except FileExistsError:
-            os.chdir(f'{mp3_path}\MP3 Downloader')
+            os.chdir(f'{mp3_path}\MP3 Files')
             new = self.link.text()
             
             video_info = YoutubeDL().extract_info(url=new, download=False)
