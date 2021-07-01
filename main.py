@@ -39,15 +39,17 @@ class MP4(QMainWindow):
             os.chdir(f"{mp4_path}")
             os.mkdir("MP4 Files")
             os.chdir(f'{mp4_path}\MP4 Files')
-            self.audio_downloder = YoutubeDL({'format':'mp4'})
+            
+            self.video_downloder = YoutubeDL({'format':'mp4'})
             new = self.link.text()
-            self.audio_downloder.extract_info(new)
+            self.video_downloder.extract_info(new)
+        
         except FileExistsError:
             os.chdir(f'{mp4_path}\MP4 Files')
-            self.audio_downloder = YoutubeDL({'format':'mp4'})
+            self.video_downloder = YoutubeDL({'format':'mp4'})
             new = self.link.text()
-            self.audio_downloder.extract_info(new)
-
+            self.video_downloder.extract_info(new)
+        
 class MP3(QMainWindow):
     def __init__(self):
         super(MP3, self).__init__()
@@ -74,20 +76,20 @@ class MP3(QMainWindow):
         self.button.move(430, 290)
         self.button.setFixedHeight(40)
         self.button.setFixedWidth(150)
-        self.button.setStyleSheet("background: #A52A2A; color: white; border: 1px solid black; border-radius: 4px; font: 10pt; font: 13pt")
+        self.button.setStyleSheet("background: #A52A2A; color: white; border: 1px solid black; border-radius: 4px; font: 13pt")
         self.button.clicked.connect(self.clicked)
-
+    
     def clicked(self):
         try:
-            mp3_path = os.path.join(os.environ['USERPROFILE'],"Desktop")
+            mp3_path = os.path.join(os.environ['USERPROFILE'], "Desktop")
             os.chdir(f'{mp3_path}')
             os.mkdir("MP3 Files")
             os.chdir(f'{mp3_path}\MP3 Files')
-            new = self.link.text()
             
+            new = self.link.text()
             video_info = YoutubeDL().extract_info(url=new, download=False)
             file = f"{video_info['title']}.mp3"
-            
+
             options = {
                 'format': 'bestaudio/best',
                 'keepvideo': False,
@@ -100,13 +102,14 @@ class MP3(QMainWindow):
         }
 
             YoutubeDL(options).download([video_info['webpage_url']])
+        
         except FileExistsError:
             os.chdir(f'{mp3_path}\MP3 Files')
             new = self.link.text()
             
             video_info = YoutubeDL().extract_info(url=new, download=False)
             file = f"{video_info['title']}.mp3"
-            
+
             options = {
                 'format': 'bestaudio/best',
                 'keepvideo': False,
@@ -119,15 +122,18 @@ class MP3(QMainWindow):
         }
 
             YoutubeDL(options).download([video_info['webpage_url']])
+            
 def process():
     app = QApplication([])
     win1 = MP4()
     win2 = MP3()
-    x = pg.prompt("Choose how you want to convert: (MP3/MP4)\n").upper()
+    
+    x = pg.prompt("Choose how you want to convert: (MP3/MP4)\n", "YouTube Converter").upper()
     if x == 'mp4'.upper():
         win1.show()
     elif x == 'mp3'.upper():
         win2.show()
+
     app.setStyle("Fusion")
     app.exec_()
 process()
