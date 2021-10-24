@@ -1,18 +1,14 @@
 # YouTube-Converter-PyQt5
 
-Please install FFMPEG and FFPROBE because MP3 will work better and will not close giving an error after u install something in mp3 format.
-Also if u have python installed then go to the main directory where u installed python, then go to scripts and put those files there, into the scripts directory/folder.
-
+Please install FFMPEG and FFPROBE because MP3 will work better and will not close giving an error after you convert something with MP3 FORMAT.
+Also if you have python installed then go to the main directory where you installed python, then go to Scripts and put those files there, into the scripts directory/folder.
 
 In my case its ----->  D:\Python\Scripts\youtube-dl.exe <-----  because I have python installed there.. 
 
+-Link to download the FILES: https://www.mediafire.com/file/3urn7g8kqdpndbm/Everything_U_need.rar/file
 
-If u don't have python installed then try to put FFMPEG and FFPROBE into the folder where u have the MAIN FILES of the app, if it doesn't work then I'll try to find another way
-in the later update..
+If you don't have python installed the go to the link below and download the app `.exe`..
 
+-Link to download the FULL APP: https://www.mediafire.com/file/irgqm68z9y88w02/YouTube+Converter.exe/file/
 
-Link to download: https://www.mediafire.com/file/3urn7g8kqdpndbm/Everything_U_need.rar/file
-
-
-But in both cases, the program makes its job..
-I hope u enjoy it :)
+I hope you enjoy it :)
